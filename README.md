@@ -1,11 +1,11 @@
-# Euler
+# Euler R
 Rust toolbox for blockchain
 
 ```bash
-➜  euler
+➜  eulerr
 Rust toolbox for blockchain.
 
-Usage: euler <COMMAND>
+Usage: eulerr <COMMAND>
 
 Commands:
   aptos  Get Aptos faucet as maximum
@@ -18,7 +18,7 @@ Options:
 ➜  euler aptos -h    
 Get Aptos faucet as maximum
 
-Usage: euler aptos [ACCOUNT] [AMOUNT]
+Usage: eulerr aptos [ACCOUNT] [AMOUNT]
 
 Arguments:
   [ACCOUNT]  Address to fund

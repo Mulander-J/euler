@@ -216,7 +216,7 @@ dependencies = [
 ]
 
 [[package]]
-name = "euler"
+name = "eulerr"
 version = "0.1.0"
 dependencies = [
  "clap",

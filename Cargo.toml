@@ -1,9 +1,15 @@
 [package]
-name = "euler"
-description = "Rust toolbox for blockchain."
+name = "eulerr"
 version = "0.1.0"
 edition = "2021"
-authors = ["Mulander King<mulander_j@outlook.com>"]
+description = "Rust toolbox for blockchain."
+keywords = ["cli", "aptos"]
+categories = ["command-line-utilities"]
+authors = ["Mulander King <mulander_j@outlook.com>"]
+repository = "https://github.com/Mulander-J/eulerr"
+homepage = "https://github.com/Mulander-J/eulerr"
+readme = "README.md"
+license = "MIT OR Apache-2.0"
 
 
 [dependencies]
