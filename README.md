@@ -2,6 +2,9 @@
 Rust toolbox for blockchain
 
 ```bash
+➜  cargo install eulerr
+➜  eulerr -V
+eulerr 1.0.0
 ➜  eulerr
 Rust toolbox for blockchain.
 
