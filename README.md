@@ -15,7 +15,7 @@ Options:
   -h, --help     Print help
   -V, --version  Print version
 
-➜  euler aptos -h    
+➜  eulerr aptos -h
 Get Aptos faucet as maximum
 
 Usage: eulerr aptos [ACCOUNT] [AMOUNT]
