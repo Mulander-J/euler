@@ -1,32 +1,30 @@
 # Euler R
 Rust toolbox for blockchain
 
+## Install
+
 ```bash
 ➜  cargo install eulerr
-➜  eulerr -V
-eulerr 1.0.0
+```
+
+## Commands
+
+```bash
+# Start
 ➜  eulerr
 Rust toolbox for blockchain.
 
 Usage: eulerr <COMMAND>
 
 Commands:
-  aptos  Get Aptos faucet as maximum
+  aptos  Aptos utils(e.g. faucet)
   help   Print this message or the help of the given subcommand(s)
 
 Options:
   -h, --help     Print help
   -V, --version  Print version
-
-➜  eulerr aptos -h
-Get Aptos faucet as maximum
-
-Usage: eulerr aptos [ACCOUNT] [AMOUNT]
-
-Arguments:
-  [ACCOUNT]  Address to fund
-  [AMOUNT]   Number of Apt to fund the account from the faucet [1~10, default: 1]
-
-Options:
-  -h, --help  Print help
+# Version
+➜  eulerr -V
+# Aptos Commands
+➜  eulerr aptos faucet [ACCOUNT] [AMOUNT]
 ```

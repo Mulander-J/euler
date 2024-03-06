@@ -9,7 +9,6 @@ struct FaucetRes {
     msg: String,
 }
 
-#[tokio::main]
 pub async fn faucet(_account: &Option<String>, _amount: &Option<u8>) {
     println!("===> ✨ Fund faucet to {:?}", _account);
     if _account.is_none() {

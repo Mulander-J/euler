@@ -1,5 +1,4 @@
 use clap::{Parser, Subcommand};
-
 mod aptos;
 
 #[derive(Parser)]
@@ -11,20 +10,22 @@ struct Cli {
 
 #[derive(Subcommand)]
 enum Commands {
-    /// Get Aptos faucet as maximum
-    Aptos {
-        /// Address to fund
-        account: Option<String>,
-        ///  Number of Apt to fund the account from the faucet [1~10, default: 1]
-        amount: Option<u8>,
-    },
+    /// Aptos utils(e.g. faucet)
+    Aptos(aptos::cmd::AptosCli),
+    // Sui
 }
 
-fn main() {
+#[tokio::main]
+async fn main() {
     let cli = Cli::parse();
+    
     match &cli.command {
-        Commands::Aptos { account, amount } => {
-            aptos::utils::faucet(account, amount);
+        Commands::Aptos(sub) => {
+            match &sub.command {
+                aptos::cmd::AptosCmd::Faucet { account, amount } => {
+                    aptos::utils::faucet(account, amount).await
+                }
+            }
         }
-    }
+    }    
 }
