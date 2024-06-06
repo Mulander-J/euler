@@ -47,7 +47,6 @@ pub async fn faucet(_account: &Option<String>, _amount: &Option<u8>) {
     }
 }
 
-///  e.g.: Ok(reqwest::get("https://httpbin.org/ip").await?.json::<HashMap<String, String>>() .await?)
 async fn faucet_one(_address: String, _amount: u8) -> Result<FaucetRes, reqwest::Error> {
     let mut headers = reqwest::header::HeaderMap::new();
     headers.insert(

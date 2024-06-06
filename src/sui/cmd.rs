@@ -1,3 +1,4 @@
+use std::fmt;
 use clap::{Parser, Subcommand, ValueEnum};
 
 #[derive(Parser)]
@@ -11,6 +12,15 @@ pub struct SuiCli {
 pub enum SuiNetwork {
     DEVNET,
     TESTNET,
+}
+
+impl fmt::Display for SuiNetwork {
+    fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
+       match self {
+        SuiNetwork::DEVNET => write!(f, "♾️ Devnet"),
+        SuiNetwork::TESTNET => write!(f, "🤖 Testnet")
+       }
+    }
 }
 
 #[derive(Subcommand)]

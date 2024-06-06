@@ -18,6 +18,7 @@ Usage: eulerr <COMMAND>
 
 Commands:
   aptos  Aptos utils(e.g. faucet)
+  sui    Sui utils(e.g. faucet)
   help   Print this message or the help of the given subcommand(s)
 
 Options:
@@ -27,4 +28,6 @@ Options:
 ➜  eulerr -V
 # Aptos Commands
 ➜  eulerr aptos faucet [ACCOUNT] [AMOUNT]
+# Sui Commands
+➜  eulerr sui faucet [NETWORK] [ACCOUNT] [AMOUNT]
 ```
