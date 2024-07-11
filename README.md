@@ -1,5 +1,5 @@
 # Euler R
-Rust toolbox for blockchain
+Blockchain command tool built with Rust.
 
 ## Install
 
