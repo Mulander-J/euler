@@ -1,5 +1,5 @@
 pub mod _type;
 pub mod aptos;
 pub mod sui;
-pub mod klaytn;
+pub mod kaia;
 

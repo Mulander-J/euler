@@ -29,8 +29,9 @@ enum Commands {
         #[arg(value_enum,default_value = "testnet")]
         network: Option<faucet::sui::SuiNetwork>,
     },
-    /// Repeatedly request funds from the Klaytn testnet faucet.
-    Klaytn {
+    /// Repeatedly request funds from the Kaia testnet faucet.
+    /// Closed due to the Google Recaptcha
+    Kaia {
         /// Address to fund
         account: String,
         /// Repetition number
@@ -50,6 +51,6 @@ async fn main() {
             account,
             count,
         } => faucet::sui::run(account, count, network).await,
-        Commands::Klaytn { account, count } => faucet::klaytn::run(account, count).await,
+        Commands::Kaia { account, count } => faucet::kaia::run(account, count).await,
     }
 }

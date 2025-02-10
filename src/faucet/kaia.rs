@@ -9,7 +9,9 @@ use std::sync::Arc;
 use std::time::Duration;
 
 const MAX_AMOUNT: u8 = 5;
+/// https://api-homepage.kaia.io/faucet/run?address=0x0
 const FAUCET_URL: &str = "https://api-baobab.wallet.klaytn.com/faucet/run";
+// recaptcha
 const PROVIDER_URL: &str = "https://public-en-kairos.node.kaia.io";
 
 #[derive(Deserialize, Debug)]
@@ -24,6 +26,10 @@ struct ErrReason {
 
 pub async fn run(_account: &String, _amount: &Option<u8>) {
     println!("===> ✨ Fund faucet to {:?}", _account);
+    if !_account.is_empty() {
+        println!("[OOPS] Kaia faucet closed.");
+        return;
+    }
 
     let num = _amount.unwrap_or(1).min(MAX_AMOUNT);
 
