@@ -38,6 +38,14 @@ enum Commands {
         #[arg(default_value = "1")]
         count: Option<u8>,
     },
+    /// Solana devnet/testnet faucet.
+    Solana {
+        /// Address to fund
+        account: String,
+        /// Which Network
+        #[arg(value_enum,default_value = "devnet")]
+        network: Option<faucet::solana::SolCluster>,
+    },
 }
 
 #[tokio::main]
@@ -52,5 +60,6 @@ async fn main() {
             count,
         } => faucet::sui::run(account, count, network).await,
         Commands::Kaia { account, count } => faucet::kaia::run(account, count).await,
+        Commands::Solana { account, network } => faucet::solana::run(account, network).await,
     }
 }
