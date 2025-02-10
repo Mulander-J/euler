@@ -1,35 +1,19 @@
 use reqwest;
+use super::_type::ResBody;
 
 const FAUCET_URL: &str = "https://faucet.testnet.aptoslabs.com/mint";
 const MAX_AMOUNT: u8 = 10;
 
-struct FaucetRes {
-    success: bool,
-    code: reqwest::StatusCode,
-    msg: String,
-}
-
-pub async fn faucet(_account: &Option<String>, _amount: &Option<u8>) {
+pub async fn run(_account: &String, _amount: &Option<u8>) {
     println!("===> ✨ Fund faucet to {:?}", _account);
-    if _account.is_none() {
-        println!("[Error] Missing value account!");
-        return;
-    }
 
-    let num = _amount.unwrap_or(1);
-    let real_amount = match num {
-        n if n > MAX_AMOUNT => {
-            println!("[Warn] Reset amount to MAX_AMOUNT: {}", MAX_AMOUNT);
-            MAX_AMOUNT
-        }
-        _ => num,
-    };
+    let num = _amount.unwrap_or(MAX_AMOUNT).min(MAX_AMOUNT);
 
     let mut count: u8 = 1;
-    while count <= real_amount {
-        println!("===> Round: {}/{} ...", count, real_amount);
+    while count <= num {
+        println!("===> Round: {}/{} ...", count, num);
         count += 1;
-        let res = faucet_one(_account.clone().unwrap(), real_amount).await;
+        let res = run_one(_account.clone(), num).await;
         match res {
             Ok(frs) => {
                 if frs.success {
@@ -47,7 +31,7 @@ pub async fn faucet(_account: &Option<String>, _amount: &Option<u8>) {
     }
 }
 
-async fn faucet_one(_address: String, _amount: u8) -> Result<FaucetRes, reqwest::Error> {
+async fn run_one(_address: String, _amount: u8) -> Result<ResBody, reqwest::Error> {
     let mut headers = reqwest::header::HeaderMap::new();
     headers.insert(
         "Content-Length",
@@ -68,7 +52,7 @@ async fn faucet_one(_address: String, _amount: u8) -> Result<FaucetRes, reqwest:
     let code = res.status();
     let text = res.text().await?;
 
-    Ok(FaucetRes {
+    Ok(ResBody {
         code,
         success: code == reqwest::StatusCode::OK,
         msg: text,

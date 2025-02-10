@@ -12,22 +12,17 @@ Blockchain command tool built with Rust.
 ```bash
 # Start
 ➜  eulerr
-Rust toolbox for blockchain.
+Repeatedly faucet for blockchain.
 
 Usage: eulerr <COMMAND>
 
 Commands:
-  aptos  Aptos utils(e.g. faucet)
-  sui    Sui utils(e.g. faucet)
-  help   Print this message or the help of the given subcommand(s)
+  aptos   Repeatedly request funds from the Aptos testnet faucet(10 APT/DAY)
+  sui     Repeatedly request funds from the Sui dev/testnet faucet
+  klaytn  Repeatedly request funds from the Klaytn testnet faucet
+  help    Print this message or the help of the given subcommand(s)
 
 Options:
   -h, --help     Print help
   -V, --version  Print version
-# Version
-➜  eulerr -V
-# Aptos Commands
-➜  eulerr aptos faucet [ACCOUNT] [AMOUNT]
-# Sui Commands
-➜  eulerr sui faucet [NETWORK] [ACCOUNT] [AMOUNT]
 ```
