@@ -1,9 +1,9 @@
 [package]
 name = "eulerr"
-version = "1.2.0"
+version = "1.3.0"
 edition = "2021"
-description = "Repeatedly faucet for blockchain."
-keywords = ["cli", "faucet", "aptos", "sui", "klaytn"]
+description = "A multi-chain faucet cli for repeatedly claiming test tokens."
+keywords = ["cli", "faucet", "aptos", "sui", "solana"]
 categories = ["command-line-utilities"]
 authors = ["Mulander King <mulander_j@outlook.com>"]
 repository = "https://github.com/Mulander-J/eulerr"

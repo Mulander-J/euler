@@ -29,7 +29,6 @@ enum Commands {
         #[arg(value_enum,default_value = "testnet")]
         network: Option<faucet::sui::SuiNetwork>,
     },
-    /// Repeatedly request funds from the Kaia testnet faucet.
     /// Closed due to the Google Recaptcha
     Kaia {
         /// Address to fund
