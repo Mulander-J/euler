@@ -14,6 +14,8 @@ enum Commands {
     Aptos {
         /// Address to fund
         account: String,
+        /// Google JWT - Bearer Token
+        token: String,
         /// Repetition number(Max:10)
         #[arg(default_value = "10")]
         count: Option<u8>,
@@ -52,7 +54,7 @@ async fn main() {
     let cli = Cli::parse();
 
     match &cli.command {
-        Commands::Aptos { account, count } => faucet::aptos::run(account, count).await,
+        Commands::Aptos { account, token, count } => faucet::aptos::run(account, token, count).await,
         Commands::Sui {
             network,
             account,
