@@ -19,13 +19,12 @@ impl fmt::Display for SolCluster {
     }
 }
 
-
 pub async fn run(_account: &String, _network: &Option<SolCluster>) {
     let network = _network.unwrap_or(SolCluster::TESTNET);
     let url = format!("https://api.{}.solana.com", network.to_string());
 
     println!(
-        "===> ✨ Get airdrop from 🌏 {} to 🤖 {:?}",
+        "===> ✨  Get airdrop from 🌏 {} to 🤖 {:?}",
         network.to_string(),
         _account
     );
@@ -33,31 +32,29 @@ pub async fn run(_account: &String, _network: &Option<SolCluster>) {
     match run_one(_account.clone(), url).await {
         Ok(frs) => {
             if frs.success {
-                println!("[Request-OK] {:#?}\r\nPlease check balance manually(maybe failed).", frs.msg);
+                println!(
+                    "[✅Request-OK] {:#?}\r\nPlease check balance manually(maybe failed).",
+                    frs.msg
+                );
             } else {
-                println!("[Request-{}] {:#?}", frs.code, frs.msg);
-
+                println!("[❗Request-{}] {:#?}", frs.code, frs.msg);
             }
         }
         Err(err) => {
-            println!("[Error] {:#?}", err);
+            println!("[‼️Error] {:#?}", err);
         }
     }
 }
 
-async fn run_one(_address: String, _url:String) -> Result<ResBody, reqwest::Error> {
-    // pack headers
-    let mut headers = reqwest::header::HeaderMap::new();
-    headers.insert(
-        "Content-Type",
-        reqwest::header::HeaderValue::from_static("application/json"),
-    );
-
+async fn run_one(_address: String, _url: String) -> Result<ResBody, reqwest::Error> {
     // send request
     let client = reqwest::Client::new();
     let res = client
         .post(_url)
-        .headers(headers)
+        .headers(reqwest::header::HeaderMap::from_iter(vec![(
+            reqwest::header::HeaderName::from_static("content-type"),
+            "application/json".parse().unwrap(),
+        )]))
         .json(&json!({
             "jsonrpc":"2.0",
             "id":"1",

@@ -28,7 +28,7 @@ pub async fn run(_account: &String, _amount: &Option<u8>, _network: &Option<SuiN
     let network = _network.unwrap_or(SuiNetwork::TESTNET);
 
     println!(
-        "===> ✨ From {} fund faucet to {:?}",
+        "===> ✨  Get airdrop from 🌏 {} to 🤖 {:?}",
         network.to_string(),
         _account
     );
